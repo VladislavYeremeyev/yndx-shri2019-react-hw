@@ -1,0 +1,10 @@
+.Grid-Parent {
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
+@media screen and (max-width: 640px) {
+	.Grid-Parent {
+		overflow-x: hidden;
+	}
+}

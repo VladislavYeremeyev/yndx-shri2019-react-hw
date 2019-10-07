@@ -1,0 +1,8 @@
+@import "./_border/TabMenu_border_b.css";
+@import "./Tab/TabMenu-Tab.css";
+@import "./Tab/_space-r/TabMenu-Tab_space-r_xxl.css";
+@import "./Tab/_active/TabMenu-Tab_active.css";
+
+.TabMenu {
+	display: flex;
+}

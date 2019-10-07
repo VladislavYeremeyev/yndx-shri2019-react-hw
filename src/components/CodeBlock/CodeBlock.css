@@ -1,0 +1,28 @@
+@import "./Line/CodeBlock-Line.css";
+@import "./BlobNum/CodeBlock-BlobNum.css";
+@import "./BlobNum/_old/CodeBlock-BlobNum_old.css";
+@import "./_line-wrap/CodeBlock_line-wrap_wrap.css";
+@import "./Token/_type/CodeBlock-Token_type_reserved.css";
+@import "./Token/_type/CodeBlock-Token_type_comment.css";
+@import "./Token/_type/CodeBlock-Token_type_string.css";
+@import "./Token/_type/CodeBlock-Token_type_fn-name.css";
+@import "./Line/_type/CodeBlock-Line_type_deletion.css";
+@import "./Line/_type/CodeBlock-Line_type_addition.css";
+@import "./Token/_type/CodeBlock-Token_type_java-reserved.css";
+@import "./Token/_type/CodeBlock-Token_type_java-fn-name.css";
+@import "./Token/_type/CodeBlock-Token_type_java-comment.css";
+
+.CodeBlock {
+	width: 100%;
+
+	color: #00234b;
+	font-family: "PT Mono", monospace;
+
+	border-spacing: 0;
+
+	counter-reset: blob_line_number blob_old_line_number;
+}
+
+.CodeBlock td {
+	display: inline-block;
+}

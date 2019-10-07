@@ -1,0 +1,13 @@
+@import "./_type/Icon_type_doc.css";
+@import "./_type/Icon_type_folder.css";
+@import "./_type/Icon_type_script.css";
+@import "./_type/Icon_type_download.css";
+@import "./_space-r/Icon_space-r_xs.css";
+
+.Icon {
+	width: 12px;
+	height: 20px;
+
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}

@@ -1,0 +1,13 @@
+@import "./_border/Breadcrumbs_border_b.css";
+
+.Breadcrumbs {
+	display: flex;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 10px 0 12px;
+
+	line-height: 20px;
+
+	list-style: none;
+}

@@ -1,0 +1,7 @@
+@import "./_color/Theme_color_project-default.css";
+@import "./_space/Theme_space_default.css";
+@import "./_font/Theme_font_default.css";
+
+.Theme {
+	background-color: var(--default-bg-color);
+}

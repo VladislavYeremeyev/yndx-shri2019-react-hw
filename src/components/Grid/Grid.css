@@ -1,0 +1,26 @@
+@import "./File/Grid-File.css";
+
+/* @import "./common.blocks/FileIcon/FileIcon.css"; */
+@import "./FileName/Grid-FileName.css";
+@import "./FileName/_text/Grid-FileName_text_bold.css";
+@import "./_m-columns/Grid_m-columns_12.css";
+@import "./Row//Grid-Row.css";
+@import "./Row/_border/Grid-Row_border_b.css";
+@import "./Row/_border/Grid-Row_border_none.css";
+@import "./Fraction/_text-align/Grid-Fraction_text-align_right.css";
+@import "./Fraction/_m-col/Grid-Fraction_m-col_2.css";
+@import "./Fraction/_m-col/Grid-Fraction_m-col_3.css";
+@import "./Fraction/_m-col/Grid-Fraction_m-col_4.css";
+@import "./Fraction/_m-col/Grid-Fraction_m-col_5.css";
+@import "./Fraction/_m-col/Grid-Fraction_m-col_6.css";
+@import "./Fraction/_m-col/Grid-Fraction_m-col_8.css";
+@import "./CommitInfo/Grid-CommitInfo.css";
+@import "./Committer/Grid-Committer.css";
+@import "./UpdateDate/Grid-UpdateDate.css";
+@import "./CommitHash/Grid-CommitHash.css";
+@import "./BranchCommitHash/Grid-BranchCommitHash.css";
+@import "./Parent/Grid-Parent.css";
+
+.Grid {
+	display: grid;
+}
