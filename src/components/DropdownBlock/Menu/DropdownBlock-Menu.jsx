@@ -40,7 +40,7 @@ function DropdownBlockMenu(props) {
 							</DropdownBlockMenuItem>
 						)
 				  )
-				: ["Arc", "My repository", "Devtools-team repository"].map(
+				: (props.items ? props.items : []).map(
 						(elem, i) => (
 							<DropdownBlockMenuItem key={i}>{elem}</DropdownBlockMenuItem>
 						)

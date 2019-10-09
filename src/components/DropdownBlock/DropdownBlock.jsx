@@ -14,7 +14,7 @@ function DropdownBlock(props) {
 		<div className={`${props.mod ? cn("DropdownBlock")(props.mod) : "DropdownBlock"}${props.mix ? ' ' + cn(props.mix[0])(props.mix[1]) : ""}`} onClick={()=> console.log("kek")}>
 			{props.children}
 			<div className="DropdownBlock-Overlay"></div>
-			<DropdownBlockMenu view={props.view}/>
+			<DropdownBlockMenu items={props.items} view={props.view}/>
 		</div>
 	);
 }

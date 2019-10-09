@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { pathToName } from "../../helper/helper.js";
 
 class Blob extends React.PureComponent {
+	_isMounted = false;
 	constructor(props) {
 		super(props);
 
@@ -19,16 +20,29 @@ class Blob extends React.PureComponent {
 		this.onChangeTab = this.onChangeTab.bind(this);
 	}
 
+	linkClickHandler(type, path) {
+		this.props.setFileType(type);
+		this.props.setPath(path);
+	}
+
 	onChangeTab(name) {
 		this.setState({ activeTab: name });
 	}
 
 	componentDidMount() {
+		this._isMounted = true;
 		let { repoName, path } = this.props;
+		this.linkClickHandler("folder", `tree/${path}`)
 
-		getFileData("redux-thunk", path).then(res => {
-			this.setState({ content: res.split("\n") });
+		getFileData(repoName, path).then(res => {
+			if (this._isMounted) {
+				this.setState({ content: res.split("\n") });
+			}
 		});
+	}
+
+	componentWillUnmount() {
+    this._isMounted = false;
 	}
 
 	render() {

@@ -1,10 +1,10 @@
 import React from "react";
 
-const withPathProp = WrappedComponent => {
+const withPathProp = (WrappedComponent, repo) => {
 	return class extends React.PureComponent {
 		render() {
 			let { path } = this.props.match.params;
-			return <WrappedComponent path={path} />;
+			return <WrappedComponent repo={repo} path={path} />;
 		}
 	};
 };

@@ -14,10 +14,10 @@ function Header(props) {
 		>
 			<HeaderLogo/>
 			<HeaderMenu mix={["TabMenu"]}>
-				<DropdownBlock>
+				<DropdownBlock items={props.repos}>
 					<div className="TabMenu-Tab TabMenu-Tab_active">
 						<Text>
-							<strong>Repository</strong> Arc
+							<strong>Repository</strong> {props.repos ? props.repos[0] : ''}
 						</Text>
 					</div>
 				</DropdownBlock>

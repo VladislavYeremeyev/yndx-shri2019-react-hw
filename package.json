@@ -17,7 +17,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint-css": "stylelint 'src/**/*.css' --fix"
+    "lint-css": "stylelint 'src/**/*.css' --fix",
+    "lint-js": "eslint src/**/*.js",
+		"prettier-js": "prettier --config .prettierrc.json --write src/**/*.js",
+		"hermione": "./node_modules/.bin/hermione gui ./tests/hermione.test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +40,8 @@
   "devDependencies": {
     "@bem-react/classname": "^1.5.6",
     "eslint": "^6.5.1",
+    "hermione": "^2.12.6",
+    "html-reporter": "^5.0.0",
     "prettier": "^1.18.2",
     "stylelint": "^11.0.0",
     "stylelint-config-airbnb": "0.0.0",

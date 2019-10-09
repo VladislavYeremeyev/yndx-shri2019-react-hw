@@ -31,11 +31,17 @@ class Grid extends React.PureComponent {
 	}
 
 	getTree() {
-		let { setFiles, setLoader, path } = this.props;
-		getGitTreeContent(setFiles, setLoader, "redux-thunk", path);
+		let { setFiles, setLoader, path, repoName } = this.props;
+		getGitTreeContent(setFiles, setLoader, repoName, path);
+	}
+
+	linkClickHandler(type, path) {
+		this.props.setFileType(type);
+		this.props.setPath(path);
 	}
 
 	componentDidMount() {
+		this.linkClickHandler("folder", `tree/${this.props.path}`)
 		this.getTree();
 	}
 
@@ -65,7 +71,7 @@ class Grid extends React.PureComponent {
 		let pathname = window.location.pathname;
 		let fileRoute =
 			pathname[pathname.length - 1] === "/" ? pathname : pathname + "/";
-		let { activeTab, goToBlob } = this.state;
+		let { goToBlob } = this.state;
 		let { path } = this.props;
 	
 		return goToBlob ? (
@@ -115,6 +121,7 @@ class Grid extends React.PureComponent {
 									mod={{ "space-r": "xs", type: file.isFolder === true ? "folder" : "script" }}
 								/>
 								<NavLink
+									onClick={() => this.linkClickHandler(file.isFolder === true ? "folder" : "script", fileRoute + file.name)}
 									to={fileRoute + file.name}
 									className={`${cn("Grid-FileName")(
 										file.isFolder === true ? { text: "bold" } : {}
@@ -173,7 +180,10 @@ export default connect(
 	state => ({
 		files: state.allFiles.filter(item =>
 			item.name.toUpperCase().includes(state.fileName.toUpperCase())
-		)
+		),
+		repoName: state.repoName,
+		fileType: state.fileType,
+		currentPath: state.currentPath
 	}),
 	actions
 )(Grid);

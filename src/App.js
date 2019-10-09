@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Layout from "./components/Layout/Layout";
 import Header from "./components/Header/Header";
 import MainContentContainer from "./components/MainContentContainer/MainContentContainer";
@@ -14,13 +14,28 @@ import "./components/Theme/Theme.css";
 import "./components/Grid/Menu/Grid-Menu.css";
 import withPathProp from "./HOCs/withPathProp.jsx";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
+import {getGitRepos} from "./Store/requests";
+import { useDispatch, useSelector } from 'react-redux';
 
-const GridWithPathProp = withPathProp(Grid);
-const BlobWithPathProp = withPathProp(Blob);
+function App(props) {
+	const dispatch = useDispatch();
+	const repos = useSelector(state => state.repos);
+	const repoName = useSelector(state => state.repoName);
 
-function App() {
-	// const [state, setState]= useState({ isLoading: true });
-	return (
+	useEffect(() => {
+		const fn = async () => {
+			const reposList = await getGitRepos();
+			dispatch({ type: 'SET_REPOS', repos: reposList });
+			dispatch({ type: 'SET_REPO_NAME', repoName: reposList.data[0] });
+		}
+		fn();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ JSON.stringify(repos), JSON.stringify(repoName) ]);
+
+	const GridWithPathProp = withPathProp(Grid, repoName);
+	const BlobWithPathProp = withPathProp(Blob);
+
+	return (	
 		<>
 			<Layout
 				mix={[
@@ -28,11 +43,11 @@ function App() {
 					{ color: "project-default", space: "default", font: "default" }
 				]}
 			>
-				<Header mix={["Layout-Container", { border: "b", "space-h": "xxl" }]} />
+				<Header repos={repos.data} mix={["Layout-Container", { border: "b", "space-h": "xxl" }]} />
 
 				<MainContentContainer mix={["Layout-Container", { "space-h": "xxl" }]}>
 					<BrowserRouter>
-						<Breadcrumbs mod={{ border: "b" }} />
+						<Breadcrumbs path={window.location} repoName={repoName} mod={{ border: "b" }} />
 						<DirectoryTitle />
 						<DirectorySubTitle />
 						<TabMenu
