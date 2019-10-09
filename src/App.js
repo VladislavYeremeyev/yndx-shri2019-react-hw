@@ -26,7 +26,9 @@ function App(props) {
 		const fn = async () => {
 			const reposList = await getGitRepos();
 			dispatch({ type: 'SET_REPOS', repos: reposList });
-			dispatch({ type: 'SET_REPO_NAME', repoName: reposList.data[0] });
+			if (repoName.length === 0) {
+				dispatch({ type: 'SET_REPO_NAME', repoName: reposList.data[0] });
+			}
 		}
 		fn();
 	// eslint-disable-next-line react-hooks/exhaustive-deps

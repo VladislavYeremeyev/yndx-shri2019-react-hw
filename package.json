@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "lint-css": "stylelint 'src/**/*.css' --fix",
     "lint-js": "eslint src/**/*.js",
-		"prettier-js": "prettier --config .prettierrc.json --write src/**/*.js",
+		"prettier-js": "prettier --config .prettierrc.json --write src/**/*.js src/**/*.jsx",
 		"hermione": "./node_modules/.bin/hermione gui ./tests/hermione.test.js"
   },
   "eslintConfig": {
