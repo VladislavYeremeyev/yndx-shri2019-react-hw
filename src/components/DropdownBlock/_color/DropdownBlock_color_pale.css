@@ -1,9 +1,9 @@
 .DropdownBlock_color_pale:after {
-	width: 9px;
+  width: 9px;
 
-	/* Could use injected svg and change svg path color, but icons are different */
+  /* Could use injected svg and change svg path color, but icons are different */
 
-	background-image: url("./dropdown_icon_pale.svg");
+  background-image: url("./dropdown_icon_pale.svg");
 
-	content: " ";
+  content: " ";
 }

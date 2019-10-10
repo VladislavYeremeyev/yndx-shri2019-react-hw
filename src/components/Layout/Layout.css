@@ -5,7 +5,7 @@
 @import "./Container/_expand/Layout-Container_expand.css";
 
 .Layout {
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }

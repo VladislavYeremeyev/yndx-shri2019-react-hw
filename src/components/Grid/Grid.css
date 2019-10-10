@@ -22,5 +22,5 @@
 @import "./Parent/Grid-Parent.css";
 
 .Grid {
-	display: grid;
+  display: grid;
 }

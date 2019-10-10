@@ -1,9 +1,9 @@
 .Footer-Element_space-r_xxl:not(:last-child) {
-	margin-right: var(--indent-xxl);
+  margin-right: var(--indent-xxl);
 }
 
 @media screen and (max-width: 640px) {
-	.Footer-Element_space-r_xxl:not(:last-child) {
-		margin-right: 0;
-	}
+  .Footer-Element_space-r_xxl:not(:last-child) {
+    margin-right: 0;
+  }
 }

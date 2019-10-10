@@ -1,8 +1,8 @@
 .Header {
-	display: flex;
+  display: flex;
 
-	flex-shrink: 1;
-	align-items: center;
-	box-sizing: border-box;
-	height: 56px;
+  flex-shrink: 1;
+  align-items: center;
+  box-sizing: border-box;
+  height: 56px;
 }

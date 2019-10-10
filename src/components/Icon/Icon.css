@@ -5,9 +5,9 @@
 @import "./_space-r/Icon_space-r_xs.css";
 
 .Icon {
-	width: 12px;
-	height: 20px;
+  width: 12px;
+  height: 20px;
 
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }

@@ -8,10 +8,10 @@
 @import "./CodeBlockContainer/_space/CodeContainer-CodeBlockContainer_space_xl.css";
 
 .CodeContainer {
-	display: flex;
-	flex-direction: column;
-	margin-top: 16px;
-	margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  margin-bottom: 16px;
 
-	line-height: 20px;
+  line-height: 20px;
 }

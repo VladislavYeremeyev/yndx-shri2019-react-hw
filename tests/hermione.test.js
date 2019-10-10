@@ -28,7 +28,7 @@ describe("Наличие элементов", () => {
   it("Отображается список файлов при переходе по ссылке в списке директории", function() {
     return this.browser
       .url("/")
-      .click(".Grid-Row .Grid-FileName")
+			.click(".Grid-Row .Grid-FileName")
       .assertView("file-list-after-link-click", ".Grid.Grid-Parent")
       .isExisting(".Grid.Grid-Parent")
       .then((exists) => assert.ok(exists, "Таблица с файлами не отображена"));
@@ -36,7 +36,7 @@ describe("Наличие элементов", () => {
 
   it("Отображается содержимое файла при переходе по ссылке в адресной строке", function() {
     return this.browser
-      .url("/blob/README.md")
+			.url("/blob/README.md")
       .assertView("file-data-after-navigation", ".CodeContainer")
       .isExisting(".CodeContainer-CodeBlockContainer")
       .then((exists) => assert.ok(exists, "Содержимое файла не отображено"));
@@ -45,7 +45,8 @@ describe("Наличие элементов", () => {
   it("Отображается содержимое файла при переходе по ссылке в списке директории", function() {
     return this.browser
       .url("/")
-      .click(".Grid-Row:last-child .Grid-FileName")
+			.click(".Grid-Row:last-child .Grid-FileName")
+			.pause(500)
       .assertView("file-data-after-link-click", ".CodeContainer")
       .isExisting(".CodeContainer-CodeBlockContainer")
       .then((exists) => assert.ok(exists, "Содержимое файла не отображено"));
@@ -93,5 +94,61 @@ describe("Наличие элементов", () => {
       .then((exists) =>
         assert.ok(exists, 'Просмотр хлебных крошек не появился')
       );
-  });
+	});
+	
+	it('Открывается Dropdown-меню в выборе репозитория', function() {
+    return this.browser
+      .url('/')
+      .assertView('repo-dropdown-click', '.Layout')
+			.click('.DropdownBlock')
+			.pause(2000)
+			.assertView('repo-dropdown-opened', '.Layout')
+			.isExisting(".DropdownBlock-Menu ")
+      .then((exists) =>
+        assert.ok(exists, 'Dropdown не открылся')
+      );
+	});
+	
+	it('Корректный hover на dropdown элементе', function() {
+    return this.browser
+      .url('/')
+      .assertView('repo-dropdown-click', '.Layout')
+			.click('.DropdownBlock')
+			.pause(2000)
+			.moveToObject('.DropdownBlock-Menu .DropdownBlock-MenuItem')
+			.assertView('repo-dropdown-hover', '.Layout')
+			.isExisting(".DropdownBlock-Menu")
+      .then((exists) =>
+        assert.ok(exists, 'Dropdown не открылся')
+      );
+	});
+
+	it('При выборе того же репозитория в Dropdown в корне не осуществляется переход в новый репозиторий', function() {
+    return this.browser
+			.url('/')
+			.assertView('repo-dropdown-clicked', '.Layout')
+			.click('.DropdownBlock')
+			.pause(1500)
+			.click('.DropdownBlock-MenuItem')
+			.pause(500)
+			.assertView('repo-dropdown-clicked2', '.Layout')
+			.isExisting(".Grid.Grid-Parent")
+      .then((exists) =>
+        assert.ok(exists, 'Список директорий не появился')
+      );
+	});
+
+	it('При выборе другого репозитория в Dropdown в корне осуществляется переход в новый репозиторий', function() {
+    return this.browser
+      .url('/')
+			.click('.DropdownBlock')
+			.pause(1500)
+			.click('.DropdownBlock-MenuItem:last-child')
+			.pause(500)
+			.assertView('repo-dropdown-clicked3', '.Layout')
+			.isExisting(".Grid.Grid-Parent")
+      .then((exists) =>
+        assert.ok(exists, 'Список директорий не появился')
+      );
+	});
 });

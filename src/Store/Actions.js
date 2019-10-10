@@ -34,13 +34,10 @@ export const setRepos = (repos) => ({
   repos,
 });
 
-export const setRepoName = (repoName) => {
-  console.log(repoName);
-  return {
-    type: Types.SET_REPO_NAME,
-    repoName,
-  };
-};
+export const setRepoName = (repoName) => ({
+  type: Types.SET_REPO_NAME,
+  repoName,
+});
 
 export const setPath = (currentPath) => ({
   type: Types.SET_PATH,

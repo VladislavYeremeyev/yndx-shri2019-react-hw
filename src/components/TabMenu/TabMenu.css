@@ -4,5 +4,5 @@
 @import "./Tab/_active/TabMenu-Tab_active.css";
 
 .TabMenu {
-	display: flex;
+  display: flex;
 }

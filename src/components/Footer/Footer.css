@@ -2,20 +2,20 @@
 @import "./Element/_space-r/Footer-Element_space-r_xxl.css";
 
 .Footer {
-	display: flex;
+  display: flex;
 
-	flex-shrink: 0;
-	align-items: center;
-	box-sizing: border-box;
-	min-height: 50px;
+  flex-shrink: 0;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 50px;
 
-	line-height: 18px;
+  line-height: 18px;
 }
 
 @media screen and (max-width: 640px) {
-	.Footer {
-		flex-direction: column;
+  .Footer {
+    flex-direction: column;
 
-		text-align: center;
-	}
+    text-align: center;
+  }
 }

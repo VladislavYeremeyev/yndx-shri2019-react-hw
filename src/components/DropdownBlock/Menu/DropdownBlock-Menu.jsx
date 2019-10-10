@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./DropdownBlock-Menu.css";
 import "./../MenuHandle/DropdownBlock-MenuHandle.css";
 import "./../HandleBar/DropdownBlock-HandleBar.css";
 import "./_view/DropdownBlock-Menu_view_branches.css";
 import DropdownBlockMenuItem from "./../MenuItem/DropdownBlock-MenuItem";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-function DropdownBlockMenu(props) {
-  const dispatch = useDispatch();
+function DropdownBlockMenu(props, context) {
+	const dispatch = useDispatch();
+	const redirectState = useState(false);
+  const isRedirect = redirectState[0];
+  const setRedirect = redirectState[1];
+
+	useEffect(() => {
+		setRedirect(false)
+	})
 
   const chooseRepo = (repo) => {
 		dispatch({ type: "SET_REPO_NAME", repoName: repo });
-		// TODO redirect to root
+		setRedirect(true)
+		
+    // TODO redirect to root
     // dispatch({ type: "SET_PATH", currentPath: "/" });
   };
 
   return (
+		<>
     <ul
       className={`DropdownBlock-Menu ${
         props.view === "branches" ? "DropdownBlock-Menu_view_branches" : ""
@@ -54,7 +65,7 @@ function DropdownBlockMenu(props) {
               {elem}
             </DropdownBlockMenuItem>
           ))}
-    </ul>
+    </ul>{isRedirect ? <Redirect to="/" /> :''}</>
   );
 }
 
