@@ -2,7 +2,11 @@ import React from "react";
 import { cn } from "@bem-react/classname";
 import "./CodeBlock.css";
 
-function CodeBlock(props) {
+interface Props {
+	codeLines: string[];
+}
+
+function CodeBlock(props: Props) {
   const codeBlock = cn("CodeBlock");
   return (
     <table className={codeBlock()}>

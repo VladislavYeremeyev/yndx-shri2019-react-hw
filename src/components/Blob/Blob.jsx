@@ -1,6 +1,6 @@
 import React from "react";
-import CodeContainer from "./../CodeContainer/CodeContainer";
-import CodeBlock from "./../CodeBlock/CodeBlock";
+import CodeContainer from "../CodeContainer/CodeContainer";
+import CodeBlock from "../CodeBlock/CodeBlock";
 import { cn } from "@bem-react/classname";
 import { getFileData } from "../../Store/requests.js";
 import * as actions from "../../Store/Actions.js";
