@@ -9,37 +9,37 @@ export const Types = {
   SET_PATH: "SET_PATH",
 };
 
-export const setFileType = (fileType) => ({
+export const setFileType = (fileType: string) => ({
   type: Types.SET_FILE_TYPE,
   fileType: fileType,
 });
 
-export const setFileName = (name) => ({
+export const setFileName = (name: string) => ({
   type: Types.SET_FILE_NAME,
   fileName: name,
 });
 
-export const setLoader = (isLoader) => ({
+export const setLoader = (isLoader: boolean) => ({
   type: Types.SET_LOADER,
   isLoader,
 });
 
-export const setFiles = (files) => ({
+export const setFiles = (files: string[]) => ({
   type: Types.SET_FILES,
   files,
 });
 
-export const setRepos = (repos) => ({
+export const setRepos = (repos: string[]) => ({
   type: Types.SET_REPOS,
   repos,
 });
 
-export const setRepoName = (repoName) => ({
+export const setRepoName = (repoName: string) => ({
   type: Types.SET_REPO_NAME,
   repoName,
 });
 
-export const setPath = (currentPath) => ({
+export const setPath = (currentPath: string) => ({
   type: Types.SET_PATH,
   currentPath,
 });

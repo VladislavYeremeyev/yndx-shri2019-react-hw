@@ -2,19 +2,31 @@ import React from "react";
 import "./Breadcrumbs.css";
 import { cn } from "@bem-react/classname";
 import BreadcrumbsItem from "./Item/Breadcrumbs-Item";
-import * as actions from "../../Store/Actions.js";
+import * as actions from "../../Store/Actions";
 import { connect } from "react-redux";
+import { State } from "../../Store/reducers/Reducer";
 
-class Breadcrumbs extends React.PureComponent {
-  constructor(props) {
+type breadcrumbsMods = {
+	border: string;
+};
+
+type breadcrumbsProps = {
+	path: string;
+	currentPath: string;
+	mod: breadcrumbsMods;
+	setPath: (path: string) => void;
+};
+
+class Breadcrumbs extends React.PureComponent<breadcrumbsProps> {
+  constructor(props: breadcrumbsProps) {
     super(props);
 
     this.state = {
-      list: props.path.pathname.split("/").filter((elem) => elem.length !== 0),
+      list: props.path.split("/").filter((elem) => elem.length !== 0),
     };
   }
 
-  linkClickHandler(path) {
+  linkClickHandler(path: string) {
     this.props.setPath(path);
   }
 
@@ -46,7 +58,7 @@ class Breadcrumbs extends React.PureComponent {
                 : "/tree/" + list.filter((link, j) => j > 0 && j <= i).join("/")
             }
           >
-            {elem}
+            <span>{elem}</span>
           </BreadcrumbsItem>
         ))}
       </ul>
@@ -55,7 +67,7 @@ class Breadcrumbs extends React.PureComponent {
 }
 
 export default connect(
-  (state) => ({
+  (state: State) => ({
     repoName: state.repoName,
     currentPath: state.currentPath,
     fileType: state.fileType,

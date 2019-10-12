@@ -2,7 +2,7 @@ import React from "react";
 import "./AuthorSpan.css";
 
 interface Props {
-	children: JSX.Element;
+	children: JSX.Element | string;
 }
 
 function AuthorSpan({children}: Props) {

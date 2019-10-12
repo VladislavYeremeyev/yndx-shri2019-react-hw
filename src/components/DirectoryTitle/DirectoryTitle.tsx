@@ -5,10 +5,12 @@ import "./Branch/DirectoryTitle-Branch.css";
 import Text from "../Text/Text";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
+import {State} from "../../Store/reducers/Reducer";
+
 const DropdownBlock = loadable(() => import("../DropdownBlock/DropdownBlock"));
 
-function DirectoryTitle(props) {
-  const path = useSelector((state) => state.currentPath).split("/");
+function DirectoryTitle() {
+  const path = useSelector((state: State) => state.currentPath).split("/");
 
   return (
     <div className="DirectoryTitle DirectoryTitle_space-t_s">
@@ -20,7 +22,8 @@ function DirectoryTitle(props) {
       <DropdownBlock
         mix={["DirectoryTitle-Branch"]}
         mod={{ color: "pale" }}
-        view="branches"
+				view="branches"
+				items={[]}
       >
         <Text mod={{ size: "xl", color: "secondary" }}>trunk</Text>
       </DropdownBlock>

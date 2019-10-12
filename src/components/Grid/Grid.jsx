@@ -8,7 +8,7 @@ import Link from "./../Link/Link";
 import AuthorSpan from "./../AuthorSpan/AuthorSpan";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../../Store/Actions.js";
+import * as actions from "../../Store/Actions";
 import { getGitTreeContent } from "../../Store/requests.js";
 import { pathToName } from "../../helper/helper.js";
 import { Redirect } from "react-router-dom";

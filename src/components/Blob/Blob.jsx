@@ -3,7 +3,7 @@ import CodeContainer from "../CodeContainer/CodeContainer";
 import CodeBlock from "../CodeBlock/CodeBlock";
 import { cn } from "@bem-react/classname";
 import { getFileData } from "../../Store/requests.js";
-import * as actions from "../../Store/Actions.js";
+import * as actions from "../../Store/Actions";
 import { connect } from "react-redux";
 import { pathToName } from "../../helper/helper.js";
 

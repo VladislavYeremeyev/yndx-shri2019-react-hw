@@ -3,7 +3,7 @@ import "./DirectorySubTitle.css";
 import Link from "../Link/Link";
 import AuthorSpan from "../AuthorSpan/AuthorSpan";
 
-function DirectorySubTitle(props) {
+function DirectorySubTitle() {
   return (
     <div className="DirectorySubTitle">
       Last commit{" "}

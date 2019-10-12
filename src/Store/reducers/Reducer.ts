@@ -1,6 +1,16 @@
-import { Types } from "../Actions.js";
+import { Types } from "../Actions";
 
-let initialState = {
+export type State = {
+	readonly fileName: string;
+  readonly isLoader: boolean;
+  readonly allFiles: string[];
+  readonly repos: string[];
+  readonly repoName: string;
+  readonly fileType: string;
+  readonly currentPath: string;
+};
+
+let initialState: State = {
   fileName: "",
   isLoader: false,
   allFiles: [],
@@ -10,7 +20,7 @@ let initialState = {
   currentPath: "",
 };
 
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action:any) => {
   switch (action.type) {
     case Types.SET_FILE_NAME:
       let { fileName } = action;

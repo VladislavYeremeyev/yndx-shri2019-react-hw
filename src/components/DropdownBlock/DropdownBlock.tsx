@@ -9,7 +9,19 @@ import "./_color/DropdownBlock_color_pale.css";
 import DropdownBlockMenu from "./Menu/DropdownBlock-Menu";
 import { cn } from "@bem-react/classname";
 
-function DropdownBlock(props) {
+type DropdownBlockMods = {
+	color: string;
+}
+
+interface DropdownBlockProps {
+	children: JSX.Element;
+	items: string[];
+	view: string;
+	mix: string[];
+	mod: DropdownBlockMods;
+}
+
+function DropdownBlock(props: DropdownBlockProps) {
   const openSate = useState(false);
   const isOpen = openSate[0];
   const setOpen = openSate[1];

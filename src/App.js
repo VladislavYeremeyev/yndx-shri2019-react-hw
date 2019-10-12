@@ -55,7 +55,7 @@ function App(props) {
 
         <MainContentContainer mix={["Layout-Container", { "space-h": "xxl" }]}>
           <Breadcrumbs
-            path={window.location}
+            path={window.location.pathname}
             repoName={repoName}
             mod={{ border: "b" }}
           />

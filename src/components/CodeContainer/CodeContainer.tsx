@@ -1,9 +1,14 @@
 import React from "react";
 import { cn } from "@bem-react/classname";
-import Icon from "./../Icon/Icon";
+import Icon from "../Icon/Icon";
 import "./CodeContainer.css";
 
-function CodeContainer(props) {
+type codeContainerProps = {
+	name: string;
+	children: JSX.Element;
+};
+
+function CodeContainer(props: codeContainerProps) {
   const codeContainer = cn("CodeContainer");
   return (
     <div className={codeContainer({ border: "all" })}>
