@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 interface DropdownBlockMenuProps {
-	view: string;
+	view?: string;
 	items: string[];
 }
 

@@ -16,9 +16,9 @@ type DropdownBlockMods = {
 interface DropdownBlockProps {
 	children: JSX.Element;
 	items: string[];
-	view: string;
-	mix: string[];
-	mod: DropdownBlockMods;
+	view?: string;
+	mix?: string[];
+	mod?: DropdownBlockMods;
 }
 
 function DropdownBlock(props: DropdownBlockProps) {

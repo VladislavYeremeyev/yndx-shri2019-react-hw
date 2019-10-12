@@ -13,7 +13,7 @@ type textMods = {
 
 interface textProps {
 	mod?: textMods;
-	children: JSX.Element | string;
+	children: JSX.Element | JSX.Element[] | string;
 }
 
 function Text(props: textProps) {

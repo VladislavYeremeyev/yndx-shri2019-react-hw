@@ -1,8 +1,18 @@
 import React from "react";
-import Text from "./../Text/Text";
+import Text from "../Text/Text";
 import { cn } from "@bem-react/classname";
 
-function TabMenu(props) {
+type tabMenuMods = {
+	border: string;
+};
+
+interface tabMenuProps {
+	mix: string[];
+	tabs: string[];
+	mod: tabMenuMods;
+}
+
+function TabMenu(props: tabMenuProps) {
   return (
     <div
       className={`${props.mod ? " " + cn("TabMenu")(props.mod) : ""}${

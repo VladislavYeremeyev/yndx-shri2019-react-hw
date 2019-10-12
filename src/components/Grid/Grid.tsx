@@ -3,18 +3,36 @@ import { cn } from "@bem-react/classname";
 import "./Grid.css";
 import "./Header/Grid-Header.css";
 import "./Header/_border/Grid-Header_border_b.css";
-import Icon from "./../Icon/Icon";
-import Link from "./../Link/Link";
-import AuthorSpan from "./../AuthorSpan/AuthorSpan";
+import Icon from "../Icon/Icon";
+import Link from "../Link/Link";
+import AuthorSpan from "../AuthorSpan/AuthorSpan";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../Store/Actions";
-import { getGitTreeContent } from "../../Store/requests.js";
-import { pathToName } from "../../helper/helper.js";
+import { getGitTreeContent } from "../../Store/requests";
+import { pathToName } from "../../helper/helper";
 import { Redirect } from "react-router-dom";
+import { State } from "../../Store/reducers/Reducer";
+import { File } from "../../Store/reducers/Reducer";
 
-class Grid extends React.PureComponent {
-  constructor(props) {
+type gridProps = {
+	label: string;
+	path: string;
+	repoName: string;
+	files: File[];
+	setFiles: (files: string[]) => void;
+	setLoader: (status: boolean) => void;
+	setFileType: (type: string) => void;
+	setPath: (type: string) => void;
+};
+
+type gridState = {
+	activeTab: string;
+	goToBlob: boolean;
+};
+
+class Grid extends React.PureComponent<gridProps, gridState> {
+  constructor(props: gridProps) {
     super(props);
 
     this.state = {
@@ -26,7 +44,7 @@ class Grid extends React.PureComponent {
     this.getTree = this.getTree.bind(this);
   }
 
-  onChangeTab(name) {
+  onChangeTab(name: string) {
     this.setState({ activeTab: name });
   }
 
@@ -35,7 +53,7 @@ class Grid extends React.PureComponent {
     getGitTreeContent(setFiles, setLoader, repoName, path);
   }
 
-  linkClickHandler(type, path) {
+  linkClickHandler(type: string, path: string) {
     this.props.setFileType(type);
     this.props.setPath(path);
   }
@@ -45,7 +63,7 @@ class Grid extends React.PureComponent {
     this.getTree();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: gridProps) {
     let { path, files } = this.props;
 
     if (prevProps.path !== path) {
@@ -185,7 +203,7 @@ class Grid extends React.PureComponent {
 }
 
 export default connect(
-  (state) => ({
+  (state: State) => ({
     files: state.allFiles.filter((item) =>
       item.name.toUpperCase().includes(state.fileName.toUpperCase())
     ),

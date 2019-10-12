@@ -1,6 +1,6 @@
 import axios from "axios";
 import _ from "lodash";
-import { pathToName } from "../helper/helper.js";
+import { pathToName } from "../helper/helper";
 
 const origin = "http://localhost:3000";
 
@@ -16,7 +16,7 @@ export const getGitRepos = () => {
     });
 };
 
-export const getFileData = (repoName, path) => {
+export const getFileData = (repoName: string, path: string) => {
   let branch = "master/";
   return axios
     .get(origin + "/api/repos/" + repoName + "/blob/" + branch + path)
@@ -38,7 +38,7 @@ export const getFileData = (repoName, path) => {
     });
 };
 
-export const getGitTreeContent = (action, onLoader, name, path) => {
+export const getGitTreeContent = (action: (files: string[]) => void, onLoader: (status: boolean) => void, name: string, path: string) => {
   onLoader(true);
   let filePath = path ? "/" + path : "";
   if (name) {
@@ -47,7 +47,7 @@ export const getGitTreeContent = (action, onLoader, name, path) => {
       .then(function(response) {
         let files = response.data.data;
 
-        let formatted = files.map((item) => {
+        let formatted = files.map((item: string) => {
           let splitedName = item.split("\t");
           let splitedType = splitedName[0].split(" ");
           let filePath = splitedName[1];

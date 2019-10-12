@@ -11,7 +11,7 @@ import Footer from "./components/Footer/Footer";
 
 import "./components/Theme/Theme.css";
 import "./components/Grid/Menu/Grid-Menu.css";
-import withPathProp from "./HOCs/withPathProp.jsx";
+import withPathProp from "./HOCs/withPathProp";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import { getGitRepos } from "./Store/requests";
 import { useDispatch, useSelector } from "react-redux";

@@ -2,30 +2,43 @@ import React from "react";
 import CodeContainer from "../CodeContainer/CodeContainer";
 import CodeBlock from "../CodeBlock/CodeBlock";
 import { cn } from "@bem-react/classname";
-import { getFileData } from "../../Store/requests.js";
+import { getFileData } from "../../Store/requests";
 import * as actions from "../../Store/Actions";
 import { connect } from "react-redux";
-import { pathToName } from "../../helper/helper.js";
+import { pathToName } from "../../helper/helper";
+import { State } from "../../Store/reducers/Reducer";
 
-class Blob extends React.PureComponent {
+type blobProps = {
+	path: string;
+	repoName: string;
+	setFileType: (type: string) => void;
+	setPath: (type: string) => void;
+};
+
+type blobState = {
+	activeTab: string;
+	content: string[];
+};
+
+class Blob extends React.PureComponent<blobProps, blobState> {
   _isMounted = false;
-  constructor(props) {
+  constructor(props: blobProps) {
     super(props);
 
     this.state = {
-      activeTab: "detais",
+      activeTab: "details",
       content: [],
     };
 
     this.onChangeTab = this.onChangeTab.bind(this);
   }
 
-  linkClickHandler(type, path) {
+  linkClickHandler(type: string, path: string) {
     this.props.setFileType(type);
     this.props.setPath(path);
   }
 
-  onChangeTab(name) {
+  onChangeTab(name: string) {
     this.setState({ activeTab: name });
   }
 
@@ -59,7 +72,7 @@ class Blob extends React.PureComponent {
 }
 
 export default connect(
-  (state) => ({
+  (state: State) => ({
     repoName: state.repoName,
   }),
   actions

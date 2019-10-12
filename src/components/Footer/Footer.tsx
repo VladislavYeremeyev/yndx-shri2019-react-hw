@@ -3,8 +3,21 @@ import { cn } from "@bem-react/classname";
 import "./Footer.css";
 import Text from "../Text/Text";
 import Link from "../Link/Link";
+import { mixType } from "./../../helper/helper";
 
-function Footer(props) {
+type footerMix = [
+  string,
+  {
+    [key: string]: string;
+  }
+];
+
+interface footerProps {
+  mix: footerMix;
+  mod?: mixType;
+}
+
+function Footer(props: footerProps) {
   return (
     <div
       className={`Footer ${props.mix ? cn(props.mix[0])(props.mix[1]) : ""}`}
@@ -20,7 +33,7 @@ function Footer(props) {
       </div>
       <div className="Footer-Element Footer-Element_space-r_xxl Footer-Copyright">
         <Text mod={{ size: "xxxs", color: "secondary" }}>
-          &copy; 2007&mdash;2019{" "}
+          <span>&copy; 2007&mdash;2019 </span>
           <Link mod={{ color: "blue" }} href="https://yandex.ru">
             Yandex
           </Link>

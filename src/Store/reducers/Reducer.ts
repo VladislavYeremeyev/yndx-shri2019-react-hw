@@ -3,11 +3,21 @@ import { Types } from "../Actions";
 export type State = {
 	readonly fileName: string;
   readonly isLoader: boolean;
-  readonly allFiles: string[];
+  readonly allFiles: File[];
   readonly repos: string[];
   readonly repoName: string;
   readonly fileType: string;
   readonly currentPath: string;
+};
+
+export type File = {
+	isFolder: boolean;
+	name: string;
+	commit: string;
+	commit_info: string;
+	committer: string;
+	message: string;
+	updated: string;
 };
 
 let initialState: State = {
