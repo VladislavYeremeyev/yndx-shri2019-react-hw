@@ -1,39 +1,43 @@
-import { Types } from "../Actions";
+import { Types } from '../Actions';
 
 export type State = {
-	readonly fileName: string;
+  readonly fileName: string;
   readonly isLoader: boolean;
   readonly allFiles: File[];
-  readonly repos: string[];
+  readonly repos: {
+    data: string[];
+  };
   readonly repoName: string;
   readonly fileType: string;
   readonly currentPath: string;
 };
 
 export type File = {
-	isFolder: boolean;
-	name: string;
-	commit: string;
-	commit_info: string;
-	committer: string;
-	message: string;
-	updated: string;
+  isFolder: boolean;
+  name: string;
+  commit: string;
+  commit_info: string;
+  committer: string;
+  message: string;
+  updated: string;
 };
 
-let initialState: State = {
-  fileName: "",
+const initialState: State = {
+  fileName: '',
   isLoader: false,
   allFiles: [],
-  repos: [],
-  repoName: "",
-  fileType: "",
-  currentPath: "",
+  repos: {
+    data: [],
+  },
+  repoName: '',
+  fileType: '',
+  currentPath: '',
 };
 
-export const reducer = (state = initialState, action:any) => {
+export const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case Types.SET_FILE_NAME:
-      let { fileName } = action;
+      const { fileName } = action;
 
       return {
         ...state,

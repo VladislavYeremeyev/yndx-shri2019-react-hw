@@ -1,23 +1,23 @@
-import React from "react";
-import CodeContainer from "../CodeContainer/CodeContainer";
-import CodeBlock from "../CodeBlock/CodeBlock";
-import { cn } from "@bem-react/classname";
-import { getFileData } from "../../Store/requests";
-import * as actions from "../../Store/Actions";
-import { connect } from "react-redux";
-import { pathToName } from "../../helper/helper";
-import { State } from "../../Store/reducers/Reducer";
+import React from 'react';
+import CodeContainer from '../CodeContainer/CodeContainer';
+import CodeBlock from '../CodeBlock/CodeBlock';
+import { cn } from '@bem-react/classname';
+import { getFileData } from '../../Store/requests';
+import * as actions from '../../Store/Actions';
+import { connect } from 'react-redux';
+import { pathToName } from '../../helper/helper';
+import { State } from '../../Store/reducers/Reducer';
 
 type blobProps = {
-	path: string;
-	repoName: string;
-	setFileType: (type: string) => void;
-	setPath: (type: string) => void;
+  path: string;
+  repoName: string;
+  setFileType: (type: string) => void;
+  setPath: (type: string) => void;
 };
 
 type blobState = {
-	activeTab: string;
-	content: string[];
+  activeTab: string;
+  content: string[];
 };
 
 class Blob extends React.PureComponent<blobProps, blobState> {
@@ -26,7 +26,7 @@ class Blob extends React.PureComponent<blobProps, blobState> {
     super(props);
 
     this.state = {
-      activeTab: "details",
+      activeTab: 'details',
       content: [],
     };
 
@@ -44,12 +44,12 @@ class Blob extends React.PureComponent<blobProps, blobState> {
 
   componentDidMount() {
     this._isMounted = true;
-    let { repoName, path } = this.props;
-    this.linkClickHandler("folder", `tree/${path}`);
+    const { repoName, path } = this.props;
+    this.linkClickHandler('folder', `tree/${path}`);
 
     getFileData(repoName, path).then((res) => {
       if (this._isMounted) {
-        this.setState({ content: res.split("\n") });
+        this.setState({ content: res.split('\n') });
       }
     });
   }
@@ -59,10 +59,10 @@ class Blob extends React.PureComponent<blobProps, blobState> {
   }
 
   render() {
-    let { content } = this.state;
-    let fileName = pathToName(this.props.path);
+    const { content } = this.state;
+    const fileName = pathToName(this.props.path);
     return (
-      <div className={cn("Layout-Container")({ expand: true })}>
+      <div className={cn('Layout-Container')({ expand: true })}>
         <CodeContainer name={fileName}>
           <CodeBlock codeLines={content} />
         </CodeContainer>

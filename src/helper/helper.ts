@@ -1,6 +1,6 @@
 export const pathToName = (path: string) => {
   if (path) {
-    let index = path.lastIndexOf("/"),
+    let index = path.lastIndexOf('/'),
       fileName;
 
     if (index > -1) {
@@ -9,8 +9,8 @@ export const pathToName = (path: string) => {
 
     return fileName || path;
   } else {
-		return path;
-	}
+    return path;
+  }
 };
 
 export type mixType = [

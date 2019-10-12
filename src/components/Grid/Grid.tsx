@@ -1,34 +1,34 @@
-import React from "react";
-import { cn } from "@bem-react/classname";
-import "./Grid.css";
-import "./Header/Grid-Header.css";
-import "./Header/_border/Grid-Header_border_b.css";
-import Icon from "../Icon/Icon";
-import Link from "../Link/Link";
-import AuthorSpan from "../AuthorSpan/AuthorSpan";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../../Store/Actions";
-import { getGitTreeContent } from "../../Store/requests";
-import { pathToName } from "../../helper/helper";
-import { Redirect } from "react-router-dom";
-import { State } from "../../Store/reducers/Reducer";
-import { File } from "../../Store/reducers/Reducer";
+import React from 'react';
+import { cn } from '@bem-react/classname';
+import './Grid.css';
+import './Header/Grid-Header.css';
+import './Header/_border/Grid-Header_border_b.css';
+import Icon from '../Icon/Icon';
+import Link from '../Link/Link';
+import AuthorSpan from '../AuthorSpan/AuthorSpan';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../Store/Actions';
+import { getGitTreeContent } from '../../Store/requests';
+import { pathToName } from '../../helper/helper';
+import { Redirect } from 'react-router-dom';
+import { State } from '../../Store/reducers/Reducer';
+import { File } from '../../Store/reducers/Reducer';
 
 type gridProps = {
-	label: string;
-	path: string;
-	repoName: string;
-	files: File[];
-	setFiles: (files: string[]) => void;
-	setLoader: (status: boolean) => void;
-	setFileType: (type: string) => void;
-	setPath: (type: string) => void;
+  label: string;
+  path: string;
+  repoName: string;
+  files: File[];
+  setFiles: (files: string[]) => void;
+  setLoader: (status: boolean) => void;
+  setFileType: (type: string) => void;
+  setPath: (type: string) => void;
 };
 
 type gridState = {
-	activeTab: string;
-	goToBlob: boolean;
+  activeTab: string;
+  goToBlob: boolean;
 };
 
 class Grid extends React.PureComponent<gridProps, gridState> {
@@ -36,7 +36,7 @@ class Grid extends React.PureComponent<gridProps, gridState> {
     super(props);
 
     this.state = {
-      activeTab: "files",
+      activeTab: 'files',
       goToBlob: false,
     };
 
@@ -49,7 +49,7 @@ class Grid extends React.PureComponent<gridProps, gridState> {
   }
 
   getTree() {
-    let { setFiles, setLoader, path, repoName } = this.props;
+    const { setFiles, setLoader, path, repoName } = this.props;
     getGitTreeContent(setFiles, setLoader, repoName, path);
   }
 
@@ -59,23 +59,23 @@ class Grid extends React.PureComponent<gridProps, gridState> {
   }
 
   componentDidMount() {
-    this.linkClickHandler("folder", `tree/${this.props.path}`);
+    this.linkClickHandler('folder', `tree/${this.props.path}`);
     this.getTree();
   }
 
   componentDidUpdate(prevProps: gridProps) {
-    let { path, files } = this.props;
+    const { path, files } = this.props;
 
     if (prevProps.path !== path) {
-      let file = pathToName(path);
-      let existFile = files.find((el) => el.name === file);
+      const file = pathToName(path);
+      const existFile = files.find((el) => el.name === file);
 
       if (!existFile) {
         this.getTree();
         return;
       }
 
-      let isDir = existFile.isFolder;
+      const isDir = existFile.isFolder;
 
       if (isDir) {
         this.getTree();
@@ -86,35 +86,35 @@ class Grid extends React.PureComponent<gridProps, gridState> {
   }
 
   render() {
-    let pathname = window.location.pathname;
-    let fileRoute =
-      pathname[pathname.length - 1] === "/" ? pathname : pathname + "/";
-    let { goToBlob } = this.state;
-    let { path } = this.props;
+    const pathname = window.location.pathname;
+    const fileRoute =
+      pathname[pathname.length - 1] === '/' ? pathname : pathname + '/';
+    const { goToBlob } = this.state;
+    const { path } = this.props;
 
     return goToBlob ? (
       <Redirect to={`/blob/${path}`} />
     ) : (
-      <div className={`${cn("Grid")()} ${cn("Grid", "Parent")()}`}>
+      <div className={`${cn('Grid')()} ${cn('Grid', 'Parent')()}`}>
         <div
-          className={`${cn("Grid-Header")({ border: "b" })} ${cn("Grid")({
-            "m-columns": "12",
+          className={`${cn('Grid-Header')({ border: 'b' })} ${cn('Grid')({
+            'm-columns': '12',
           })}`}
         >
-          <div className={`${cn("Grid-Fraction")({ "m-col": 2 })}`}>Name</div>
-          <div className={`${cn("Grid-Fraction")({ "m-col": 2 })}`}>
+          <div className={`${cn('Grid-Fraction')({ 'm-col': 2 })}`}>Name</div>
+          <div className={`${cn('Grid-Fraction')({ 'm-col': 2 })}`}>
             Last commit
           </div>
-          <div className={`${cn("Grid-Fraction")({ "m-col": 4 })}`}>
+          <div className={`${cn('Grid-Fraction')({ 'm-col': 4 })}`}>
             Commit message
           </div>
-          <div className={`${cn("Grid-Fraction")({ "m-col": 2 })}`}>
+          <div className={`${cn('Grid-Fraction')({ 'm-col': 2 })}`}>
             Committer
           </div>
           <div
-            className={`${cn("Grid-Fraction")({
-              "m-col": 2,
-              "text-align": "right",
+            className={`${cn('Grid-Fraction')({
+              'm-col': 2,
+              'text-align': 'right',
             })}`}
           >
             Updated
@@ -124,70 +124,70 @@ class Grid extends React.PureComponent<gridProps, gridState> {
           this.props.files.map((file, i) => (
             <div
               key={i}
-              className={`${cn("Grid-Row")({
-                border: i === this.props.files.length - 1 ? "none" : "b",
-              })} ${cn("Grid")({
-                "m-columns": "12",
+              className={`${cn('Grid-Row')({
+                border: i === this.props.files.length - 1 ? 'none' : 'b',
+              })} ${cn('Grid')({
+                'm-columns': '12',
               })}`}
             >
               <div
-                className={`${cn("Grid-File")()} ${cn("Grid-Fraction")({
-                  "m-col": 2,
+                className={`${cn('Grid-File')()} ${cn('Grid-Fraction')({
+                  'm-col': 2,
                 })}`}
               >
                 <Icon
                   mod={{
-                    "space-r": "xs",
-                    type: file.isFolder === true ? "folder" : "script",
+                    'space-r': 'xs',
+                    type: file.isFolder === true ? 'folder' : 'script',
                   }}
                 />
                 <NavLink
                   onClick={() =>
                     this.linkClickHandler(
-                      file.isFolder === true ? "folder" : "script",
+                      file.isFolder === true ? 'folder' : 'script',
                       fileRoute + file.name
                     )
                   }
                   to={fileRoute + file.name}
-                  className={`${cn("Grid-FileName")(
-                    file.isFolder === true ? { text: "bold" } : {}
+                  className={`${cn('Grid-FileName')(
+                    file.isFolder === true ? { text: 'bold' } : {}
                   )}`}
                 >
                   {file.name}
                 </NavLink>
               </div>
               <div
-                className={`${cn("Grid-CommitHash")()} ${cn("Grid-Fraction")({
-                  "m-col": 2,
+                className={`${cn('Grid-CommitHash')()} ${cn('Grid-Fraction')({
+                  'm-col': 2,
                 })}`}
               >
-                <Link href="#" mod={{ color: "blue" }}>
+                <Link href="#" mod={{ color: 'blue' }}>
                   {file.commit}
                 </Link>
-                <div className={`${cn("Grid-CommitInfo")()}`}>
+                <div className={`${cn('Grid-CommitInfo')()}`}>
                   {file.commit_info}
                 </div>
               </div>
               <div
-                className={`${cn("Grid-CommitMessage")()} ${cn("Grid-Fraction")(
+                className={`${cn('Grid-CommitMessage')()} ${cn('Grid-Fraction')(
                   {
-                    "m-col": 4,
+                    'm-col': 4,
                   }
                 )}`}
               >
                 {file.message}
               </div>
               <div
-                className={`${cn("Grid-Committer")()} ${cn("Grid-Fraction")({
-                  "m-col": 2,
+                className={`${cn('Grid-Committer')()} ${cn('Grid-Fraction')({
+                  'm-col': 2,
                 })}`}
               >
                 <AuthorSpan>{file.committer}</AuthorSpan>
               </div>
               <div
-                className={`${cn("Grid-UpdateDate")()} ${cn("Grid-Fraction")({
-                  "m-col": 2,
-                  "text-align": "right",
+                className={`${cn('Grid-UpdateDate')()} ${cn('Grid-Fraction')({
+                  'm-col': 2,
+                  'text-align': 'right',
                 })}`}
               >
                 {file.updated}

@@ -1,20 +1,20 @@
-import React from "react";
-import "./Breadcrumbs.css";
-import { cn } from "@bem-react/classname";
-import BreadcrumbsItem from "./Item/Breadcrumbs-Item";
-import * as actions from "../../Store/Actions";
-import { connect } from "react-redux";
-import { State } from "../../Store/reducers/Reducer";
+import React from 'react';
+import './Breadcrumbs.css';
+import { cn } from '@bem-react/classname';
+import BreadcrumbsItem from './Item/Breadcrumbs-Item';
+import * as actions from '../../Store/Actions';
+import { connect } from 'react-redux';
+import { State } from '../../Store/reducers/Reducer';
 
 type breadcrumbsMods = {
-	border: string;
+  border: string;
 };
 
 type breadcrumbsProps = {
-	path: string;
-	currentPath: string;
-	mod: breadcrumbsMods;
-	setPath: (path: string) => void;
+  path: string;
+  currentPath: string;
+  mod: breadcrumbsMods;
+  setPath: (path: string) => void;
 };
 
 class Breadcrumbs extends React.PureComponent<breadcrumbsProps> {
@@ -22,7 +22,7 @@ class Breadcrumbs extends React.PureComponent<breadcrumbsProps> {
     super(props);
 
     this.state = {
-      list: props.path.split("/").filter((elem) => elem.length !== 0),
+      list: props.path.split('/').filter((elem) => elem.length !== 0),
     };
   }
 
@@ -31,14 +31,14 @@ class Breadcrumbs extends React.PureComponent<breadcrumbsProps> {
   }
 
   render() {
-    let list = this.props.currentPath
-      .split("/")
+    const list = this.props.currentPath
+      .split('/')
       .filter((elem) => elem.length !== 0);
 
     return (
       <ul
         className={
-          this.props.mod ? cn("Breadcrumbs")(this.props.mod) : "Breadcrumbs"
+          this.props.mod ? cn('Breadcrumbs')(this.props.mod) : 'Breadcrumbs'
         }
       >
         {list.map((elem, i) => (
@@ -46,16 +46,16 @@ class Breadcrumbs extends React.PureComponent<breadcrumbsProps> {
             onClick={() => {
               this.linkClickHandler(
                 i === 0
-                  ? "/"
-                  : "/tree/" +
-                      list.filter((link, j) => j > 0 && j <= i).join("/")
+                  ? '/'
+                  : '/tree/' +
+                      list.filter((link, j) => j > 0 && j <= i).join('/')
               );
             }}
             key={i}
             href={
               i === 0
-                ? "/"
-                : "/tree/" + list.filter((link, j) => j > 0 && j <= i).join("/")
+                ? '/'
+                : '/tree/' + list.filter((link, j) => j > 0 && j <= i).join('/')
             }
           >
             <span>{elem}</span>

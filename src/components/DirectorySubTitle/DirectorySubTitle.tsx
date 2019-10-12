@@ -1,19 +1,19 @@
-import React from "react";
-import "./DirectorySubTitle.css";
-import Link from "../Link/Link";
-import AuthorSpan from "../AuthorSpan/AuthorSpan";
+import React from 'react';
+import './DirectorySubTitle.css';
+import Link from '../Link/Link';
+import AuthorSpan from '../AuthorSpan/AuthorSpan';
 
 function DirectorySubTitle() {
   return (
     <div className="DirectorySubTitle">
-      Last commit{" "}
-      <Link href="#" mod={{ color: "blue" }}>
+      Last commit{' '}
+      <Link href="#" mod={{ color: 'blue' }}>
         c4d248
-      </Link>{" "}
-      on{" "}
-      <Link href="#" mod={{ color: "blue" }}>
+      </Link>{' '}
+      on{' '}
+      <Link href="#" mod={{ color: 'blue' }}>
         20 Oct 2017, 12:24
-      </Link>{" "}
+      </Link>{' '}
       by <AuthorSpan>robot-srch-releaser</AuthorSpan>
     </div>
   );

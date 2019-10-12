@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import "./DropdownBlock.css";
-import "./Overlay/DropdownBlock-Overlay.css";
-import "./Delimeter/DropdownBlock-Delimeter.css";
-import "./LastUpdate/DropdownBlock-LastUpdate.css";
-import "./BranchName/DropdownBlock-BranchName.css";
-import "./_opened/DropdownBlock_opened.css";
-import "./_color/DropdownBlock_color_pale.css";
-import DropdownBlockMenu from "./Menu/DropdownBlock-Menu";
-import { cn } from "@bem-react/classname";
+import React, { useState } from 'react';
+import './DropdownBlock.css';
+import './Overlay/DropdownBlock-Overlay.css';
+import './Delimeter/DropdownBlock-Delimeter.css';
+import './LastUpdate/DropdownBlock-LastUpdate.css';
+import './BranchName/DropdownBlock-BranchName.css';
+import './_opened/DropdownBlock_opened.css';
+import './_color/DropdownBlock_color_pale.css';
+import DropdownBlockMenu from './Menu/DropdownBlock-Menu';
+import { cn } from '@bem-react/classname';
 
 type DropdownBlockMods = {
-	color: string;
-}
+  color: string;
+};
 
 interface DropdownBlockProps {
-	children: JSX.Element;
-	items: string[];
-	view?: string;
-	mix?: string[];
-	mod?: DropdownBlockMods;
+  children: JSX.Element;
+  items: string[];
+  view?: string;
+  mix?: string[];
+  mod?: DropdownBlockMods;
 }
 
 function DropdownBlock(props: DropdownBlockProps) {
@@ -29,9 +29,9 @@ function DropdownBlock(props: DropdownBlockProps) {
   return (
     <div
       className={`${
-        props.mod ? cn("DropdownBlock")(props.mod) : "DropdownBlock"
-      }${props.mix ? " " + cn(props.mix[0])(props.mix[1]) : ""}${
-        isOpen ? " " + cn("DropdownBlock")({ opened: true }) : ""
+        props.mod ? cn('DropdownBlock')(props.mod) : 'DropdownBlock'
+      }${props.mix ? ' ' + cn(props.mix[0])(props.mix[1]) : ''}${
+        isOpen ? ' ' + cn('DropdownBlock')({ opened: true }) : ''
       }`}
       onClick={() => setOpen(!isOpen)}
     >

@@ -1,11 +1,11 @@
-import React from "react";
-import "./AuthorSpan.css";
+import React from 'react';
+import './AuthorSpan.css';
 
 interface Props {
-	children: JSX.Element | string;
+  children: JSX.Element | string;
 }
 
-function AuthorSpan({children}: Props) {
+function AuthorSpan({ children }: Props) {
   return <span className="AuthorSpan">{children}</span>;
 }
 
