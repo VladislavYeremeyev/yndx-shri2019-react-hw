@@ -87,3 +87,25 @@ selenium-standalone start
 
 npm run hermione
 ```
+
+## Миграция на TypeScript
+
+Перевёл JS файлы на TypeScript.
+Запуск почти аналогичен приведенному выше:
+
+```bash
+mkdir "react_arcanum"
+cd react_arcanum
+git clone -b ts-migration git@github.com:VladislavYeremeyev/yndx-shri2019-nodejs-hw.git backend # Скачиваем репозиторий с серверной частью
+git clone -b ts-migration git@github.com:VladislavYeremeyev/yndx-shri2019-react-hw.git frontend # Скачиваем этот репозиторий с клиентской частью React
+npm --prefix ./backend i # Устанавливаем зависимости серверной части
+cd backend
+npm run start-ts <absolute path to repos folder> # Запускаем сервер, в параметр необходимо передать абсолютный путь до папки с репозиториями
+# Подробнее про работу сервера описано здесь: https://github.com/VladislavYeremeyev/yndx-shri2019-nodejs-hw
+
+# В новом окне терминала из общей директории react_arcanum запускаем клиентскую часть
+cd frontend # Переходим в директорию с клиентской частью
+npm i # Устанавливаем зависимости
+npm run build # Сборка проекта
+npm start # Запуск dev-сервера с HMR
+```
