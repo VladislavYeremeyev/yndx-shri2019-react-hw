@@ -29,7 +29,8 @@
     "lint-css": "stylelint 'src/**/*.css' --fix",
     "lint-js": "eslint src/**/**/*.js src/**/**/*.jsx",
     "lint-ts": "eslint --fix './src/**/**/*.{ts,tsx}'",
-    "prettier-js": "prettier --config .prettierrc.json --write src/**/**/*.jsx src/**/**/*.js",
+		"prettier-js": "prettier --config .prettierrc.json --write src/**/**/*.jsx src/**/**/*.js",
+		"prettier-ts": "prettier --config .prettierrc.json --write src/**/**/*.tsx src/**/**/*.ts",
     "hermione": "./node_modules/.bin/hermione gui ./tests/hermione.test.js"
   },
   "eslintConfig": {
