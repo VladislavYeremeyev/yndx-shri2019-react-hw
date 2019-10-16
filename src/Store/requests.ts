@@ -1,12 +1,12 @@
-import axios from "axios";
-import _ from "lodash";
-import { pathToName } from "../helper/helper.js";
+import axios from 'axios';
+import _ from 'lodash';
+import { pathToName } from '../helper/helper';
 
-const origin = "http://localhost:3000";
+const origin = 'http://localhost:3000';
 
 export const getGitRepos = () => {
   return axios
-    .get(origin + "/api/repos")
+    .get(origin + '/api/repos')
     .then(function(response) {
       return response.data;
     })
@@ -16,51 +16,56 @@ export const getGitRepos = () => {
     });
 };
 
-export const getFileData = (repoName, path) => {
-  let branch = "master/";
+export const getFileData = (repoName: string, path: string) => {
+  const branch = 'master/';
   return axios
-    .get(origin + "/api/repos/" + repoName + "/blob/" + branch + path)
+    .get(origin + '/api/repos/' + repoName + '/blob/' + branch + path)
     .then(function(response) {
       let data;
-      if (typeof response.data === "string") {
+      if (typeof response.data === 'string') {
         data = response.data;
-      } else if (typeof response.data === "object") {
+      } else if (typeof response.data === 'object') {
         data = JSON.stringify(response.data, null, 2);
       } else {
-        data = "Invalid file format";
+        data = 'Invalid file format';
       }
 
       return data;
     })
     .catch(function(error) {
       console.log(error);
-      return "";
+      return '';
     });
 };
 
-export const getGitTreeContent = (action, onLoader, name, path) => {
+export const getGitTreeContent = (
+  action: (files: string[]) => void,
+  onLoader: (status: boolean) => void,
+  name: string,
+  path: string
+) => {
   onLoader(true);
-  let filePath = path ? "/" + path : "";
+  const filePath = path ? '/' + path : '';
   if (name) {
     return axios
-      .get(origin + "/api/repos/" + name + "/tree/master" + filePath + "/")
+      .get(origin + '/api/repos/' + name + '/tree/master' + filePath + '/')
       .then(function(response) {
-        let files = response.data.data;
+        const files = response.data.data;
 
-        let formatted = files.map((item) => {
-          let splitedName = item.split("\t");
-          let splitedType = splitedName[0].split(" ");
-          let filePath = splitedName[1];
-          let name = pathToName(filePath);
+        const formatted = files.map((item: string) => {
+          const splitedName = item.split('\t');
+          const splitedType = splitedName[0].split(' ');
+          const filePath = splitedName[1];
+          const name = pathToName(filePath);
 
           return {
             name: name,
-            isFolder: splitedType[1] === "tree",
-            commit: "d53dsv",
-            commit_info: "by Alexey Besedin, 4 s ago",
-            message: "[vcs] move http to arc",
-            committer: "noxoomo",
-            updated: "4 s ago",
+            isFolder: splitedType[1] === 'tree',
+            commit: 'd53dsv',
+            commit_info: 'by Alexey Besedin, 4 s ago',
+            message: '[vcs] move http to arc',
+            committer: 'noxoomo',
+            updated: '4 s ago',
           };
         });
 

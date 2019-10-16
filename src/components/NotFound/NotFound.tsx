@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function NotFound(props) {
+function NotFound() {
   return (
     <>
       <h2>Ресурс не найден</h2>
